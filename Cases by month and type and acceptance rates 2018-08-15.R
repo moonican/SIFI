@@ -6,10 +6,11 @@ AllCases_AllSites <- AllCases_20181127
 AllCases_AllSites$OPENED_MONTH<-cut(AllCases_AllSites$OPENED,breaks="month")
 AllCases_AllSites$CLOSED_MONTH<-cut(AllCases_AllSites$CLOSED,breaks="month")
 
-Referrals<-filter(AllCases_AllSites,(CASETYPE=="STE_REFERL"|CASETYPE=="LAS_REFERL"|CASETYPE=="FLK_REF"|CASETYPE=="IRW_REFERL"))
-Screenings<-filter(AllCases_AllSites,(CASETYPE=="FLK_SCR"|CASETYPE=="IRW_SCR"|CASETYPE=="LAS_SCR"|CASETYPE=="STE_SCR"))
-Release<-filter(AllCases_AllSites,(CASETYPE=="STE_Releas"|CASETYPE=="FLK_RS"|CASETYPE=="IRW_RS"|CASETYPE=="LAS_RS"))
+Analysis_Dataset <- AllCases_AllSites %>% filter(CASETYPE %in% c("STE_REFERL", "LAS_REFERL", "PP_REFERL", "FLK_REF", "IRW_REFERL", "FLK_SCR", "IRW_SCR", "LAS_SCR", "PP_SCR", "STE_SCR", "STE_Releas", "FLK_RS", "IRW_RS", "LAS_RS", "PP_RS"))
 
+Referrals<-filter(Analysis_Dataset,(CASETYPE=="STE_REFERL"|CASETYPE=="LAS_REFERL"|CASETYPE=="FLK_REF"|CASETYPE=="IRW_REFERL"|CASETYPE=="PP_REFERL"))
+Screenings<-filter(Analysis_Dataset,(CASETYPE=="FLK_SCR"|CASETYPE=="IRW_SCR"|CASETYPE=="LAS_SCR"|CASETYPE=="STE_SCR"|CASETYPE=="PP_SCR"))
+Release<-filter(Analysis_Dataset,(CASETYPE=="STE_Releas"|CASETYPE=="FLK_RS"|CASETYPE=="IRW_RS"|CASETYPE=="LAS_RS"|CASETYPE=="PP_RS"))
 
 #Referrals<-filter(AllCases_20180815,CASETYPE =="STE_REFERL - Stewart Referral")
 #Screenings<-filter(AllCases_20180815,CASETYPE=="STE_SCR - Stewart Screening Interview")
